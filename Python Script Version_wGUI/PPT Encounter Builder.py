@@ -202,16 +202,35 @@ class mywindow(QtWidgets.QMainWindow):
         return self.ui.max_slider.value()
 
     def okayClicked(self):
-        print("I clicked the okay button.")
-        print("The Value of the PL Slider is: ", self.getPartyLevel())
-        print("The Value of the PS Slider is: ", self.getPartySize())
-        print("The Value of the Severity Combo Box is: ", self.getSeverity())
-        print("The Value of the Line Text Box is: ", self.getCustomBudget())
-        print("The Value of the Min Slider is: ", self.getMin())
-        print("The Value of the Max Slider is: ", self.getMax())
-        encounters = build_encounters(self.getPartyLevel(), self.getPartySize(), self.getSeverity(), self.getMax(), self.getMin(), self.getCustomBudget())
+        # print("I clicked the okay button.")
+        # print("The Value of the PL Slider is: ", self.getPartyLevel())
+        # print("The Value of the PS Slider is: ", self.getPartySize())
+        # print("The Value of the Severity Combo Box is: ", self.getSeverity())
+        # print("The Value of the Line Text Box is: ", self.getCustomBudget())
+        # print("The Value of the Min Slider is: ", self.getMin())
+        # print("The Value of the Max Slider is: ", self.getMax())
+        print('Working...')
+        solution = build_encounters(self.getPartyLevel(),
+                                      self.getPartySize(),
+                                      self.getSeverity(),
+                                      self.getMax(),
+                                      self.getMin(),
+                                      self.getCustomBudget())
         print("Encounters: ")
-        print(encounters)
+        print(solution)
+
+        filename = 'PL-' + str(self.getPartyLevel()) + '_PS-' + str(self.getPartySize()) + '_SEV-' + self.getSeverity()
+        filename = filename + '_MIN-' + str(self.getMin()) + '_Max-' + str(self.getMax())
+        filename = filename + '_CB-' + str(self.getCustomBudget()) + '.csv'
+
+        df = pd.DataFrame(solution)
+        # print("Number of Columns: ",len(df.columns))
+        columnNames = []
+        for col in df.columns:
+            columnNames.append('Monster ' + str(col + 1))
+        df.columns = columnNames
+        df.to_csv(filename, index=False)
+        print('Encounters saved to file: ', filename)
 
     def quitClicked(self):
         print("Exiting Application")
