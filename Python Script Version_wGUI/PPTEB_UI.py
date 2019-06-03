@@ -218,6 +218,7 @@ class Ui_MainWindow(object):
         self.ps_slider.setMinimum(1)
         self.ps_slider.setMaximum(10)
         self.ps_slider.setPageStep(1)
+        self.ps_slider.setProperty("value", 4)
         self.ps_slider.setOrientation(QtCore.Qt.Horizontal)
         self.ps_slider.setObjectName("ps_slider")
         self.pl_slider = QtWidgets.QSlider(self.centralwidget)
@@ -319,7 +320,7 @@ class Ui_MainWindow(object):
         self.ps_label.setText(_translate("MainWindow", "Party Size:"))
         self.pl_label.setText(_translate("MainWindow", "Party Level:"))
         self.pl_slider_counter.setText(_translate("MainWindow", "1"))
-        self.ps_slider_counter.setText(_translate("MainWindow", "1"))
+        self.ps_slider_counter.setText(_translate("MainWindow", "4"))
         self.min_slider_counter.setText(_translate("MainWindow", "1"))
         self.max_slider_counter.setText(_translate("MainWindow", "1"))
 

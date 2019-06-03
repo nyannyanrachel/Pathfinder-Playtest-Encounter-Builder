@@ -458,6 +458,9 @@
     <property name="pageStep">
      <number>1</number>
     </property>
+    <property name="value">
+     <number>4</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
     </property>
@@ -547,7 +550,7 @@
      </font>
     </property>
     <property name="text">
-     <string>1</string>
+     <string>4</string>
     </property>
    </widget>
    <widget class="QLabel" name="min_slider_counter">
