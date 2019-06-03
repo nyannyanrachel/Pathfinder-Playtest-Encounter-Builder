@@ -1,40 +1,30 @@
-from PyQt5.QtWidgets import (QApplication, QComboBox, QDialog,
-                             QDialogButtonBox, QFormLayout, QGridLayout, QGroupBox, QHBoxLayout,
-                             QLabel, QLineEdit, QMenu, QMenuBar, QPushButton, QSpinBox, QTextEdit,
-                             QVBoxLayout)
-
+from PyQt5 import QtWidgets, uic
 import sys
 
+from PPTEB_UI import Ui_MainWindow
 
-class Dialog(QDialog):
-    NumGridRows = 3
-    NumButtons = 4
+
+class mywindow(QtWidgets.QMainWindow):
 
     def __init__(self):
-        super(Dialog, self).__init__()
-        self.createFormGroupBox()
+        super(mywindow, self).__init__()
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
 
-        buttonBox = QDialogButtonBox(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
-        buttonBox.accepted.connect(self.accept)
-        buttonBox.rejected.connect(self.reject)
+        self.ui.okay_button.clicked.connect(self.okayClicked)
+        self.ui.cancel_button.clicked.connect(self.quitClicked)
 
-        mainLayout = QVBoxLayout()
-        mainLayout.addWidget(self.formGroupBox)
-        mainLayout.addWidget(buttonBox)
-        self.setLayout(mainLayout)
+    def okayClicked(self):
+        print("I clicked the okay button.")
+        print("The Radio Button is Clicked: ", self.ui.radioButton.isChecked())
+        print("Slider Value: ", self.ui.horizontalSlider.value())
 
-        self.setWindowTitle("Form Layout - pythonspot.com")
-
-    def createFormGroupBox(self):
-        self.formGroupBox = QGroupBox("Form layout")
-        layout = QFormLayout()
-        layout.addRow(QLabel("Name:"), QLineEdit())
-        layout.addRow(QLabel("Country:"), QComboBox())
-        layout.addRow(QLabel("Age:"), QSpinBox())
-        self.formGroupBox.setLayout(layout)
+    def quitClicked(self):
+        print("Exiting Application")
+        sys.exit(0)
 
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    dialog = Dialog()
-    sys.exit(dialog.exec_())
+app = QtWidgets.QApplication([])
+application = mywindow()
+application.show()
+sys.exit(app.exec())
