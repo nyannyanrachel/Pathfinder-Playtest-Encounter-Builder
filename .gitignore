@@ -6,11 +6,11 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff:
-"Python Script Version_wGUI/.idea/workspace.xml"
-"Python Script Version_wGUI.idea/tasks.xml"
+Python Script Version_wGUI/.idea/workspace.xml
+Python Script Version_wGUI.idea/tasks.xml
 
 # Virtual Environment
-"Python Script Version_wGUI/venv/"
+Python Script Version_wGUI/venv/
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/

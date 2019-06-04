@@ -53,3 +53,12 @@ For my next version, I want to try figure out what ways I can make the algorithm
 - Changing the base case so that if the amount of experience left is < the lowest possible xp value the algorithm stops.
 
 For a more complex way to increase efficiency, I want to look at way the algorithm could be multi-threaded so that two different possibilities of encouners can be built at the same time. Or, while one monster is being found, another thread could be finding the next monster with an estimated remaining budget. Due to the way multithreading works in python however, I believe there wwould be some potential difficulty in maintaining data integrity and ensuring there are no race conditions.
+
+
+---
+
+### 6/2/2019 Changes
+
+I wanted to try making this project a standalone executable projecc for portability and ease of use. That way, people wouldn't have to install specific software or jump through loops and hurdles to run the program. To do so, I split the project off into a different style of implementation.
+
+The new implementation is as strictly python scripting with a PyQt5 interface. The project is being developed in IntelliJ's PyCharm IDE and in Python 3.7.x.
