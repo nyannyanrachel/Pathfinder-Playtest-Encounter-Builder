@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\Rachel Yasaka\Documents\GitHub\Pathfinder-Playtest-Encounter-Builder\Python Script Version_wGUI\venv"
+$env:VIRTUAL_ENV="C:\Users\distr\Documents\GitHub\Pathfinder-Playtest-Encounter-Builder\Python Script Version_wGUI\venv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

@@ -1,4 +1,4 @@
-#!"C:\Users\Rachel Yasaka\Documents\GitHub\Pathfinder-Playtest-Encounter-Builder\Python Script Version_wGUI\venv\Scripts\python.exe"
+#!"C:\Users\distr\Documents\GitHub\Pathfinder-Playtest-Encounter-Builder\Python Script Version_wGUI\venv\Scripts\python.exe"
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip3'
 __requires__ = 'pip==19.0.3'
 import re
