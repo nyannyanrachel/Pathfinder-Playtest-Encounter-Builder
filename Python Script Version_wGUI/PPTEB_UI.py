@@ -2,11 +2,12 @@
 
 # Form implementation generated from reading ui file 'PPTEB_UI.ui'
 #
-# Created by: PyQt5 UI code generator 5.11.3
+# Created by: PyQt5 UI code generator 5.12.2
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -323,4 +324,5 @@ class Ui_MainWindow(object):
         self.ps_slider_counter.setText(_translate("MainWindow", "4"))
         self.min_slider_counter.setText(_translate("MainWindow", "1"))
         self.max_slider_counter.setText(_translate("MainWindow", "1"))
+
 

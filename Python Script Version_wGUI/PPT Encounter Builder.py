@@ -1,7 +1,7 @@
 import pandas as pd
 import os
 
-from PyQt5 import QtWidgets, QtCore, QtGui, uic
+from PyQt5 import QtWidgets, QtCore, QtGui
 import sys
 
 from PPTEB_UI import Ui_MainWindow
@@ -111,7 +111,7 @@ def build_encounters(party_level, party_size, severity, max_c, min_c, budget):
     pruned_xp_costs = nontrivial_xp_costs[nontrivial_xp_costs[str(party_level)] != 'X']  # Remove all creatures of impossible difficulty.
     print("Built the pruned monster list")
 
-    print("Finding All Encounters")
+    print("Finding   All Encounters")
     # Now that we have the creatures and how much they cost, build all possible encounters.
     find_creature(pruned_xp_costs, XP_Budget, party_level, max_c, min_c)  # This function does most of the heavy lifting
     print("Found All Encounters")
@@ -221,14 +221,14 @@ class mywindow(QtWidgets.QMainWindow):
         #print("Encounters: ")
         #print(solution)
 
-        directory = './output'
-        if not os.path.exists(directory):
-            os.mkdir(directory)
+        directory = './output/'
+
         filename = 'PL-' + str(self.getPartyLevel()) + '_PS-' + str(self.getPartySize()) + '_SEV-'
         filename = filename + self.getSeverity() + '_MIN-' + str(self.getMin()) + '_Max-' + str(self.getMax())
-        filename = filename + '_CB-' + str(self.getCustomBudget()) + '.csv'
-
+        filename = filename + '_CB-' + str(self.getCustomBudget())# + '.csv'
         filename = os.path.join(directory, filename)
+        filename = self.saveFileDialog(filename)
+
         print("Attempting to save file to: ", filename)
         df = pd.DataFrame(solution)
         # print("Number of Columns: ",len(df.columns))
@@ -236,12 +236,22 @@ class mywindow(QtWidgets.QMainWindow):
         for col in df.columns:
             columnNames.append('Monster ' + str(col + 1))
         df.columns = columnNames
-        df.to_csv(filename, index=False)
+        df.to_csv(filename+'.csv', index=False)
         print('Encounters saved to file: ', filename)
 
     def quitClicked(self):
         print("Exiting Application")
         sys.exit(0)
+
+    def saveFileDialog(self,filename):
+        dialog = QtWidgets.QFileDialog()
+        dialog.setDefaultSuffix('csv')
+        options = dialog.Options()
+        options |= dialog.DontUseNativeDialog
+        fileName, _ = dialog.getSaveFileName(self,"QFileDialog.getSaveFileName()",filename,"Comma Separated Values (*.csv)", options=options)
+        if fileName:
+            return fileName
+            #print(fileName)
 
 
 app = QtWidgets.QApplication([])
