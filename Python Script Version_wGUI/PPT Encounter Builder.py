@@ -109,11 +109,12 @@ def build_encounters(party_level, party_size, severity, max_c, min_c, budget):
     xp_costs = bestiary[['CREATURE NAME', str(party_level)]]  # Get the cost for all creatures.
     nontrivial_xp_costs = xp_costs[xp_costs[str(party_level)] != '-']  # Remove all creatures of trivial difficulty.
     pruned_xp_costs = nontrivial_xp_costs[nontrivial_xp_costs[str(party_level)] != 'X']  # Remove all creatures of impossible difficulty.
-    print("Build the pruned monster list")
+    print("Built the pruned monster list")
 
+    print("Finding All Encounters")
     # Now that we have the creatures and how much they cost, build all possible encounters.
     find_creature(pruned_xp_costs, XP_Budget, party_level, max_c, min_c)  # This function does most of the heavy lifting
-    print("Created All Encounters")
+    print("Found All Encounters")
     # and builds the encounter list into a global variable.
     temp_enc_list = encounter_list.copy()  # Copy the encounters list into a temporary value to return
     encounter_list = []  # Scrub the global encounters list clean so that it can be ready for another
