@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 
 from PyQt5 import QtWidgets, QtCore, QtGui, uic
 import sys
@@ -216,13 +217,18 @@ class mywindow(QtWidgets.QMainWindow):
                                       self.getMax(),
                                       self.getMin(),
                                       self.getCustomBudget())
-        print("Encounters: ")
-        print(solution)
+        #print("Encounters: ")
+        #print(solution)
 
-        filename = 'PL-' + str(self.getPartyLevel()) + '_PS-' + str(self.getPartySize()) + '_SEV-' + self.getSeverity()
-        filename = filename + '_MIN-' + str(self.getMin()) + '_Max-' + str(self.getMax())
+        directory = './output'
+        if not os.path.exists(directory):
+            os.mkdir(directory)
+        filename = 'PL-' + str(self.getPartyLevel()) + '_PS-' + str(self.getPartySize()) + '_SEV-'
+        filename = filename + self.getSeverity() + '_MIN-' + str(self.getMin()) + '_Max-' + str(self.getMax())
         filename = filename + '_CB-' + str(self.getCustomBudget()) + '.csv'
 
+        filename = os.path.join(directory, filename)
+        print("Attempting to save file to: ", filename)
         df = pd.DataFrame(solution)
         # print("Number of Columns: ",len(df.columns))
         columnNames = []
