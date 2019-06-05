@@ -1,0 +1,13 @@
+# User-specific stuff:
+**/.idea/
+
+
+# Virtual Environment
+**/venv/
+
+# Output Files
+**/output
+
+# Executable Creation Files
+**/dist
+**/build
